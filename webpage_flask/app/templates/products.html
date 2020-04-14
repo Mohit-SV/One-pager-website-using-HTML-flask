@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="text-center">Products</h1>
+    <p>My skills are for sale!!</p>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-bordered table-striped mb-0 table-hover">
+        <thead class="table-info table-dark">
+        <tr>
+            <th scope="col" >Product</th>
+            <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+        <tr>
+            <td><img src="{{ product.image_url }}" width="200px" height="200px">
+                <br><br>
+                <div class="text-center font-weight-bold">
+                    <u>{{ product.product_title }}</u>
+                </div>
+            </td>
+            <td>
+                <p class="font-weight-light">{{ product.description }}</p>
+                <br><br><br><br><br>
+                <div class="text-right">
+                     <button type="button" class="btn btn-secondary">Buy</button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    {% endfor %}
+        </table>
+    </div>
+        <nav aria-label="...">
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+                {% if prev_url %}
+              <a class="page-link" href="{{ prev_url }}" tabindex="-1">Newer</a>
+                {% endif %}
+            </li>
+            <li class="page-item">
+
+                {% if next_url %}
+              <a class="page-link" href="{{ next_url }}">Older</a>
+                {% endif %}
+            </li>
+          </ul>
+        </nav>
+
+{% endblock %}

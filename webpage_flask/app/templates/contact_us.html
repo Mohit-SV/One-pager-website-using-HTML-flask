@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+    <h1 class="text-center">Contact us</h1><br>
+    <p class="text-left">Get in touch with us...</p>
+    <form action="" method="post" novalidate>
+        {{ wtf.quick_form(form) }}
+        {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </form>
+{% endblock %}
